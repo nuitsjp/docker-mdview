@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 parse_yaml() {
    local prefix=$2
    local s='[[:space:]]*' w='[a-zA-Z0-9_]*' fs=$(echo @|tr @ '\034')
@@ -15,25 +15,32 @@ parse_yaml() {
    }'
 }
 
-search_config() {
-    local prefix=$2
-    parse_yaml $1 ${prefix}
-    local val_name=${prefix}inherit
-    echo "test:${val_name}"
-    values=$(echo ${val_name} | \
+parse_config()
+{
+    local inherits=""
+    local l_inherit=""
+    local values=""
+    eval $(parse_yaml $1 "l_")
+    values=$(echo ${l_inherit} | \
                 sed -e "s/\[/\(/" \
                     -e "s/[ \t]*$//" \
-                    -e "s/\]\$/\)/" \
+                    -e "s/\]/\)/" \
                     -e "s/,/ /g" \
                     -e "s/  */ /g")
+    eval $(echo "local inherits=${values}")
 
-    echo "inherits=${values}"
+    for item in ${inherits[@]}; do
+        parse_config $item
+    done
+    eval $(parse_yaml $1 "mdview_")
 }
 
-search_config config.yml config
+parse_config config.yml
 
-# eval $(search_config config.yml)
-
-# for item in ${inherits[@]}; do
-#    echo $item
-# done
+echo A=$mdview_A
+echo A1=$mdview_A1
+echo A2=$mdview_A2
+echo B=$mdview_B
+echo B1=$mdview_B1
+echo B2=$mdview_B2
+echo C=$mdview_C

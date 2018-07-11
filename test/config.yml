@@ -8,9 +8,7 @@
 # major versionが違うときにはエラーを出す。
 review_version: 2.0
 
-B: B2Value
-B2: B2Value
-C: B2Value
+C: CValue
 
 # ほかの設定ファイルの継承を指定できる。同じパラメータに異なる値がある場合は、
 # 呼び出し元の値が優先される。
@@ -18,7 +16,7 @@ C: B2Value
 # 場合、B.ymlの値が優先される。さらに今このファイルに同じパラメータがあるなら、
 # その値がB.ymlよりも優先される。
 # 同様にA.yml、B.yml内でさらにinherit:パラメータを使うこともできる。
-# inherit: ["A.yml", "B.yml"]
+inherit: ["A.yml", "B.yml"]
 
 # ブック名(ファイル名になるもの。ASCII範囲の文字を使用)
 bookname: アーキテクチャ設計書
