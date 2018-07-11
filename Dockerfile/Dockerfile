@@ -25,7 +25,7 @@ RUN apt-get update && \
 COPY bin/md2reviews.sh /usr/local/bin
 COPY bin/mdview-init.sh /usr/local/bin
 COPY bin/review-pdfmaker.sh /usr/local/bin
-COPY bin/yaml.sh /usr/local/bin
+COPY bin/parse_config.sh /usr/local/bin
 RUN chmod +x /usr/local/bin/*
 
 CMD ["mdview"]

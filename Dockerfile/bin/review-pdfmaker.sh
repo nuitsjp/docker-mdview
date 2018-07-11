@@ -1,5 +1,5 @@
 #!/bin/bash
-source yaml.sh
+source parse_config.sh
 
 src=`pwd`
 mkdir /var/tmp/mdview
@@ -9,7 +9,7 @@ md2reviews.sh
 sed -i -e "s/.md/.re/g" catalog.yml
 review-pdfmaker $1
 
-eval $(parse_yaml config.yml)
+eval $(parse_config config.yml)
 if [ -f ${pdfmaker_coverpdf} ]; then
   pdftk $pdfmaker_coverpdf "${bookname}.pdf" cat output result.pdf
 fi
