@@ -11,15 +11,9 @@ review-pdfmaker $1
 
 parse_config $1
 if [ -f ${mdview_pdfmaker_coverpdf} ]; then
-  pdftk $mdview_pdfmaker_coverpdf output uncompressed.pdf uncompress
-  sed -e "s/date/2018-07-11/g" <uncompressed.pdf >modified.pdf
-  pdftk modified.pdf output recompressed.pdf compress
-  pdftk recompressed.pdf "${mdview_bookname}.pdf" cat output result.pdf
-  rm "${mdview_bookname}.pdf"
-  # rm uncompressed.pdf
-  rm modified.pdf
-  rm recompressed.pdf
-  mv result.pdf "${mdview_bookname}.pdf"
+  echo Append cover PDF:$mdview_pdfmaker_coverpdf
+  pdftk $mdview_pdfmaker_coverpdf "${mdview_bookname}.pdf" cat output result.pdf
+  mv result.pdf "${src}/${mdview_bookname}.pdf"
+else
+  cp "${mdview_bookname}.pdf" $src
 fi
-
-cp *.pdf $src

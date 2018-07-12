@@ -10,6 +10,7 @@
 *.sln.docstates
 *.re
  /.vs/slnx.sqlite
+sample/book.pdf
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
