@@ -22,8 +22,5 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY bin/md2reviews.sh /usr/local/bin
-COPY bin/mdview-init.sh /usr/local/bin
-COPY bin/review-pdfmaker.sh /usr/local/bin
-COPY bin/parse_config.sh /usr/local/bin
+COPY bin/* /usr/local/bin/
 RUN chmod +x /usr/local/bin/*
