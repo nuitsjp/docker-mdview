@@ -5,7 +5,7 @@
 ドキュメントを執筆するにあたり、必要な設定ファイルなどを作製します。
 
 ```cmd
-docker run --rm -v ${pwd}:/work nuitsjp/mdview /bin/sh -c "cd /work && mdview-init.sh book"
+docker run --rm -v ${pwd}:/work nuitsjp/mdview "cd /work && mdview-init.sh book"
 ```
 
 mdview-init.shの引数にbookを指定しているため、bookというサブディレクトリが作成され、その下に必要ファイルが配置されます。
@@ -27,7 +27,7 @@ Hello, Re:View!
 <span style="color: #d32f2f">カレントディレクトリをbookフォルダに移動後</span>、次のコマンドを実行しPDFにビルドします。
 
 ```cmd
-docker run --rm -v ${pwd}:/work nuitsjp/mdview /bin/sh -c "cd /work && review-pdfmaker.sh config.yml"
+docker run --rm -v ${pwd}:/work nuitsjp/mdview "cd /work && review-pdfmaker.sh config.yml"
 ```
 
 ![](image/pdf.png)

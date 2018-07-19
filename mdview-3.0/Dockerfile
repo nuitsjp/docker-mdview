@@ -24,3 +24,5 @@ RUN apt-get update && \
 
 COPY bin/* /usr/local/bin/
 RUN chmod +x /usr/local/bin/*
+
+ENTRYPOINT ["/bin/sh", "-c"]

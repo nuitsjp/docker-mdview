@@ -35,7 +35,7 @@ $ docker pull nuitsjp/mdview:2.5
 ドキュメントを執筆するにあたり、必要な設定ファイルなどを作製します。
 
 ```cmd
-docker run --rm -v %cd%:/work nuitsjp/mdview /bin/sh -c "cd /work && mdview-init.sh document"
+docker run --rm -v %cd%:/work nuitsjp/mdview "cd /work && mdview-init.sh document"
 ```
 
 mdview-init.shの引数にdocumentを指定しているため、documentというサブディレクトリが作成され、その下に必要ファイルが配置されます。
@@ -59,7 +59,7 @@ Hello, Re:View!
 <span style="color: #d32f2f">カレントディレクトリをbookフォルダに移動後</span>、次のコマンドを実行しPDFにビルドします。
 
 ```cmd
-docker run --rm -v %cd%:/work nuitsjp/mdview /bin/sh -c "cd /work && review-pdfmaker.sh config.yml"
+docker run --rm -v %cd%:/work nuitsjp/mdview "cd /work && review-pdfmaker.sh config.yml"
 ```
 
 実行が完了すると、次のようなPDFが作成されます。
